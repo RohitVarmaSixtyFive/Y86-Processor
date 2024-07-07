@@ -1,47 +1,80 @@
-# Intro to Processor Architecture - Project (Spring 2024)
+# Y-86 Processor Design
 
-## 1.Overall Goal (Total Marks - 100)
+## Introduction
 
-Each group (2 students) must develop a processor architecture design based on the Y86 ISA using Verilog. The design
-should be thoroughly tested to satisfy all the specification requirements using simulations. The project submission
-must include the following
+The project involves the development of a processor architecture based on the Y86 ISA using Verilog. The project includes both a sequential design and a 5-stage pipelined design. The goal is to create a functional processor that executes all Y86 instructions. The project also includes comprehensive testing to verify the correctness of the designs.
 
-- A report describing the design details of the various stages of the processor architecture, the supported features
-(including simulation snapshots of the features supported) and the challenges encountered. `(Marks-10)`
-- Verilog code for processor design and testbench
+## Design Details
 
-## 2.Specifications
+### Sequential Design
 
-The required specifications in the processor design are as follows:
+The sequential design follows the architecture discussed in Section 4.3 of the textbook. It includes the following components:
+- **Fetch Stage**: Fetches instructions from memory.
+- **Decode Stage**: Decodes the fetched instructions.
+- **Execute Stage**: Executes arithmetic and logical operations.
+- **Memory Stage**: Accesses memory for load/store instructions.
+- **Write-Back Stage**: Writes results back to the register file.
 
-- A bare minimum processor architecture must implement a sequential design as discussed in Section 4.3 of
-textbook. `(Marks-25)`
-- A full fledged processor architecture implementation with 5 stage pipeline as discussed in Sections 4.4 and 4.5
-of textbook, which includes support for eliminating pipeline hazards. `(Marks-40)`
+#### Supported Features
+- All Y86 instructions except `call` and `ret`.
+- Accurate program counter (PC) management and instruction decoding.
+- Correct implementation of arithmetic and logical operations.
 
-Your submission should at least have the first design mentioned above in order to get minimal marks. However, your
-goal should be to submit a design with pipelined architecture so that you score maximum marks.
+#### Challenges
+- Ensuring correct instruction sequencing and handling control flow changes.
+- Managing data dependencies and avoiding hazards in a sequential setup.
 
-### Important points to notice:
-- Both the above implementations must execute all the instructions from Y86 ISA except **call** and **ret** instructions to get the above-mentioned marks. If you also execute **call** and **ret** instructions, additional marks will be awarded.`(Marks-15)`
-- Students are required to create 2 to 4 test cases (machine encodings of a sample program), ensuring comprehensive coverage of all instructions. `(Marks-10)`
-- You will be provided with a sample test case in a .txt file, facilitating testcase generation. Additionally, complex hidden test cases will be assessed during evalutions. (Mark distribution for these test cases is included is included in Sequential and Pipeline implementation).
+### Pipelined Design
 
-## 3.Design Approach
-The design approach should be modular, i.e., each stage has to be coded as separate modules and tested independently
-in order to help the integration without too many issues.
+The pipelined design extends the sequential design by incorporating a 5-stage pipeline as described in Sections 4.4 and 4.5 of the textbook. The pipeline stages are:
+- **Fetch (IF)**
+- **Decode (ID)**
+- **Execute (EX)**
+- **Memory Access (MEM)**
+- **Write-Back (WB)**
 
+#### Supported Features
+- All Y86 instructions except `call` and `ret`.
+- Hazard detection and resolution mechanisms, including data forwarding and pipeline stalling.
+- Pipeline control for managing instruction flow and eliminating structural hazards.
 
-## 4.Targets and Evaluation
+#### Challenges
+- Implementing effective hazard detection and resolution strategies.
+- Ensuring proper synchronization between pipeline stages to maintain instruction integrity.
 
-Each group will be evaluated twice during the project - firstly on **Feb 20**. (**entire Sequential Design**)
+### Extended Functionality
 
-The final evaluation will happen in the 1st week of March (**dates will be announced later**).
+Both designs were enhanced to support `call` and `ret` instructions, adding the following features:
+- **Call Instruction**: Pushes the return address onto the stack and jumps to the target address.
+- **Ret Instruction**: Pops the return address from the stack and jumps back to it.
 
-## 5.Suggestions for Design Verification
+## Testing and Verification
 
-Please adhere to the following verification approaches as much as possible.
-- You can individually test each stage/module for its intended functionality by creating module specific test
-inputs.
-- Please write an assembly program for any algorithm (e.g., sorting algorithm) using Y86 ISA and the corresponding encoded instructions and use the encoded instructions to test your integrated design.
-- If possible, you can also think of an automated testbench that will help you to verify your design efficiently, i.e., automatically verify the state of the processor and memory after execution of each instruction in the program.
+### Test Cases
+
+We developed 4 test cases covering a range of Y86 instructions to ensure comprehensive testing:
+1. **Basic Arithmetic**: Tests add, sub, and logical operations.
+2. **Control Flow**: Tests jumps, conditional jumps, and calls.
+3. **Memory Operations**: Tests load and store instructions.
+4. **Complex Program**: A sorting algorithm implemented in Y86 assembly to test a combination of operations.
+
+### Simulation Snapshots
+
+Simulation snapshots were taken to verify the correct execution of instructions and proper state transitions. These snapshots include:
+- Instruction execution at each pipeline stage.
+- Register file updates and memory access.
+- Correct handling of control flow changes and hazards.
+
+### Verification Strategies
+
+- **Module Testing**: Each module was tested independently with specific test inputs to verify functionality.
+- **Automated Testbench**: An automated testbench was developed to verify the processor and memory state after each instruction execution.
+- **Assembly Program Testing**: A sorting algorithm written in Y86 assembly was used to test the integrated design, ensuring correct overall functionality.
+
+## Conclusion
+
+This project successfully developed both a sequential and a pipelined processor architecture based on the Y86 ISA using Verilog. The designs were thoroughly tested to meet all specifications, and additional features for handling `call` and `ret` instructions were implemented. The challenges encountered were effectively addressed, resulting in a robust and functional processor design. This project demonstrates the principles of processor design and the application of Verilog in implementing complex digital systems.
+
+---
+
+This report documents the design, implementation, and testing of the processor architecture, highlighting the supported features, challenges encountered, and verification strategies employed to ensure the correctness and functionality of the design.
