@@ -1,0 +1,72 @@
+$date
+	Mon Feb 19 14:18:39 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module writeback_tb $end
+$var reg 1 ! clk $end
+$var reg 1 " cnd $end
+$var reg 4 # icode [3:0] $end
+$var reg 4 $ rA [3:0] $end
+$var reg 4 % rB [3:0] $end
+$var reg 64 & valA [63:0] $end
+$var reg 64 ' valE [63:0] $end
+$var reg 64 ( valM [63:0] $end
+$scope module UUT $end
+$var wire 1 ! clk $end
+$var wire 1 " cnd $end
+$var wire 4 ) icode [3:0] $end
+$var wire 4 * rA [3:0] $end
+$var wire 4 + rB [3:0] $end
+$var wire 64 , valA [63:0] $end
+$var wire 64 - valE [63:0] $end
+$var wire 64 . valM [63:0] $end
+$var reg 4 / dstE [3:0] $end
+$var reg 4 0 dstM [3:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b1111 0
+b1111 /
+bx .
+bx -
+bx ,
+bx +
+bx *
+bx )
+bx (
+bx '
+bx &
+bx %
+bx $
+bx #
+x"
+0!
+$end
+#10
+b0 0
+b100 /
+b11110 &
+b11110 ,
+b110010 (
+b110010 .
+b10100 '
+b10100 -
+0"
+b1 %
+b1 +
+b0 $
+b0 *
+b1011 #
+b1011 )
+1!
+#20
+0!
+#30
+1!

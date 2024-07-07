@@ -1,0 +1,71 @@
+$date
+	Mon Feb 19 13:10:29 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module memory_tb $end
+$var wire 64 ! valM [63:0] $end
+$var wire 64 " memory_address [63:0] $end
+$var wire 1 # dmem_error $end
+$var wire 64 $ datamem [63:0] $end
+$var reg 1 % clk $end
+$var reg 4 & icode [3:0] $end
+$var reg 64 ' valA [63:0] $end
+$var reg 64 ( valE [63:0] $end
+$var reg 64 ) valP [63:0] $end
+$scope module uut $end
+$var wire 1 % clk $end
+$var wire 4 * icode [3:0] $end
+$var wire 64 + valA [63:0] $end
+$var wire 64 , valE [63:0] $end
+$var wire 64 - valP [63:0] $end
+$var reg 64 . datamem [63:0] $end
+$var reg 1 # dmem_error $end
+$var reg 64 / memory_address [63:0] $end
+$var reg 64 0 valM [63:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 0
+b0 /
+b0 .
+b0 -
+b0 ,
+b0 +
+b0 *
+b0 )
+b0 (
+b0 '
+b0 &
+0%
+b0 $
+0#
+b0 "
+b0 !
+$end
+#10
+b1001 $
+b1001 .
+b110 !
+b110 0
+b101 "
+b101 /
+b1001 )
+b1001 -
+b1 (
+b1 ,
+b101 '
+b101 +
+b1001 &
+b1001 *
+1%
+#20
+0%
+#30
+1%
